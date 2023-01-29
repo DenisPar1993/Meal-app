@@ -1,4 +1,5 @@
 export default {
     meals:["Salmon"],
-    mealsByLetter:[]
+    mealsByLetter:[],
+    mealsByIngridients:[]
 }

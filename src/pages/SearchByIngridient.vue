@@ -1,23 +1,27 @@
 <template>
-    <h1 class="text-5xl font-bold mb-5">Ingridients</h1>
-    <div class="my-5 font-size-xl p-3 bg-gray-200" v-for="meal of meals" :key="meal.idIngredient">
-        <h2>{{ meal.strIngredient }}</h2>
-        <p>{{ meal.strDescription }}</p>
-    </div>
+   <div class="text-4xl font-bold m-4">Ingridient</div>
+   <div v-if="meals.length>1">
+      <Meal :meals="meals"/>
+   </div>
+   
 </template>
 <script setup>
+import MealItem from '../components/MealItem.vue';
+import Meal from '../components/Meal.vue';
 import axios from '../axios';
 import {ref,computed,onMounted} from 'vue';
 import { useRouter, useRoute } from 'vue-router'
-const meals=ref([])
+
+import store from '../store';
+const meals=computed(()=>store.state.mealsByIngridients)
+const route= useRoute()
+const ingridient=ref('')
 
 
 onMounted(()=>{
-    axios.get('list.php?i=list')
-    .then(({data})=>{
-        debugger
-        meals.value=data.meals
-    })
+    ingridient.value = route.params.ingridient
+    console.log(ingridient.value);
+   store.dispatch('searchMealsByIngridients',ingridient.value)
 })
 
 

@@ -6,7 +6,7 @@
        <div>
         <router-link :to="{name:'byName'}" class="inline-flex items-center px-2 h-full hover:bg-purple-200">Search Meals</router-link>
         <router-link :to="{name:'byLetter'}" class="inline-flex items-center px-2 h-full hover:bg-purple-200">Meals by Letter</router-link>
-        <router-link :to="{name:'byIngridient'}" class="inline-flex items-center px-2 h-full hover:bg-purple-200">Meals by Ingredients</router-link>
+        <router-link :to="{name:'Ingridients'}" class="inline-flex items-center px-2 h-full hover:bg-purple-200">Meals by Ingredients</router-link>
        </div>
     </header>
 </template>

@@ -5,13 +5,14 @@
          class="rounded border-2 border-gray-200 w-full"
          @change="searchMeals"
          placeholder="Search for meals">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-         
-         <MealItem v-for="meal of meals" :meal="meal" />
-        </div>
+         <div v-if="meals.length>1">
+            <Meal :meals="meals" />
+         </div>
+        
     </div>
 </template>
 <script setup>
+import Meal from '../components/Meal.vue';
 import axios from '../axios';
 import {ref,computed,onMounted} from 'vue';
 import { useRouter, useRoute } from 'vue-router'
